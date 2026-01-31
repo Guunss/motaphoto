@@ -1,0 +1,49 @@
+.modale {
+    display: block;
+    opacity: 0;
+    position: fixed;
+    z-index: 99;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 0;
+    overflow : auto;
+    background-color: black;
+    background-color: rgb(0,0,0,0.4);
+    transition: opacity 1s ease-out;
+
+    .modale-content {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        background-color: white;
+        margin: 15% auto;
+        border: 5px solid black;
+        width: 597px;
+        border-radius: 5px;
+    }
+
+    #formulaire {
+        padding-left: 165px;
+        label {
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: 'Poppins';
+        }
+        input {
+            width: 263px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid #B8BBC2;
+            font-size: 12px;
+            font-weight: 400;
+            font-family: 'Space Mono';
+        }
+        textarea {
+            width: 263px;
+            height: 210px;
+            border-radius: 8px;
+            border: 1px solid #B8BBC2;
+        }
+    }
+}
