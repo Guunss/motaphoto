@@ -1,0 +1,118 @@
+@use './variables.scss';
+
+.contenu-page-photo {
+
+    margin-bottom: 50px;
+
+
+    .photo-container {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        padding-top: 50px;
+
+        .infos {
+            flex: 0 0 50%;
+            border-bottom: 1px solid black;
+            margin-right: 10px;
+            padding-bottom: 20px;
+        }
+
+        .photo {
+            flex: 0 0 50%;
+
+            img {
+                padding: 5px;
+                object-fit: contain;
+                width: 98%;
+                height: 98%;
+            }
+        }
+
+    }
+
+    .description-photo {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-family: 'Space Mono';
+    }
+
+    .interaction {
+        height: 118px;
+        border-bottom: 1px solid black;
+        display: flex;
+        flex-direction: row;
+
+        #contact {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex: 0 0 50%;
+            justify-content: space-between;
+
+            .show-modale-contact {
+                background-color: variables.$color-gris-2;
+                width: 272px;
+                height: 50px;
+                text-align: center;
+                border-radius: 2px;
+                line-height: 50px;
+                text-decoration: none;
+                color: black;
+                font-family: "Space Mono";
+                font-size: 12px;
+
+                &:hover {
+                    border: 2px solid variables.$color-gris-1
+                }
+            }
+        }
+
+        .navigation {
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: end;
+
+            .tooltips {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                #tooltip-precedent,
+                #tooltip-suivant {
+                    width: 81;
+                    height: 71;
+                    position: absolute;
+                    margin-bottom: 25px;
+                    margin-right: 100px;
+                    overflow: hidden;
+                    opacity: 0;
+                    transition: opacity 0.3s ease-in-out;
+
+                    img {
+                        object-fit: cover;
+                    }
+
+                }
+            }
+
+            .links {
+                margin-top: 25px;
+
+                .fleche-btn {
+                    padding: 10px;
+
+                    img {
+                        transition: all 0.3s ease-in-out;
+                        &:hover {
+                            transform: scale(2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

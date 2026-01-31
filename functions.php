@@ -15,5 +15,13 @@ function enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_assets');
 
+// custom image sizes 
+function motaphoto_sizes() {
+    // miniatures hover navigation
+    add_image_size( 'custom-thumbnail', 81, 71, true); 
+}
+add_action( 'after_setup_theme', 'motaphoto_sizes' );
+
+
 
 ?>

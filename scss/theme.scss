@@ -2,7 +2,42 @@
 @use 'partials/header.scss';
 @use 'partials/footer.scss';
 @use 'partials/modale.scss';
+@use 'partials/photo.scss';
 
 body {
     margin: 0;
+
+    main {
+        width: 80%;
+        margin: auto;
+    }
+}
+
+h1 {
+    font-family: 'SpaceMono';
+    font-size: 96px;
+    font-style: italic;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: 'SpaceMono';
+    font-size: 66px;
+    font-style: italic;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+h3 {
+    font-family: 'SpaceMono';
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+p {
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 300;
 }
