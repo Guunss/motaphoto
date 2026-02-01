@@ -58,23 +58,23 @@ endif;
 
   </section>
   <section class="interaction">
-	    <div id="contact">
+    <div id="contact">
       <p>Cette photo vous intéresse ?</p>
       <a class="show-modale-contact" href="#">Contact</a>
     </div>
 
     <div class="navigation">
       <?php
-        $postPrecedent = get_previous_post();
-        $postSuivant = get_next_post();
+      $postPrecedent = get_previous_post();
+      $postSuivant = get_next_post();
       ?>
       <div class="tooltips">
         <?php if (!empty($postPrecedent)) { ?>
           <span
             id="tooltip-precedent"><?php echo get_the_post_thumbnail($postPrecedent->ID, 'custom-thumbnail'); ?></span>
         <?php } ?>
-        <?php if (!empty($postSuivant)) { ?>
-        <span id="tooltip-suivant"><?php echo get_the_post_thumbnail($postSuivant->ID, 'custom-thumbnail'); ?></span>
+        <?php if (!empty($postSuivant )) { ?>
+          <span id="tooltip-suivant"><?php echo get_the_post_thumbnail($postSuivant->ID, 'custom-thumbnail'); ?></span>
         <?php } ?>
       </div>
       <div class="links">
@@ -92,7 +92,43 @@ endif;
     </div>
 
   </section>
-  <section class="suggestions"></section>
+  <section class="suggestions">
+      <h3>Vous aimerez aussi</h3>
+      <div class="photos">
+        <?php
+        // recup catégorie photo cette page
+        $categories = wp_get_post_terms(get_the_ID(), 'categorie');
+        if ($categories && !is_wp_error($categories)) {
+          $ID_categories = wp_list_pluck($categories, 'term_id');
+
+          $photos_siblings = new WP_Query(array(
+            'post_type' => 'photo',
+            'posts_per_page' => 2,
+            'post__not_in' => array(get_the_ID()), //on ignore celle qui est affichée actuellement
+            'orderby' => 'rand',
+            'tax_query' => array(
+              array(
+                'taxonomy' => 'categorie',
+                'field' => 'id',
+                'terms' => $ID_categories,
+              ),
+            ),
+          ));
+
+          if ($photos_siblings->have_posts()) {
+            while ($photos_siblings->have_posts()) {
+              $photos_siblings->the_post();
+              get_template_part('template_parts/part_photo');
+            }
+            wp_reset_postdata();
+          } else {
+            echo '<p>Oooh... tellement vide !</p>';
+          }
+        }
+        ?>
+
+      </div>
+    </section>
 
 </div>
 <?php get_footer(); ?>

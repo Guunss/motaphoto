@@ -252,6 +252,11 @@ footer .menu-menu-footer-container ul li a {
 .contenu-page-photo .interaction .navigation .links .fleche-btn img:hover {
   transform: scale(2);
 }
+.contenu-page-photo .suggestions .photos {
+  display: flex;
+  display: row;
+  justify-content: space-around;
+}
 
 body {
   margin: 0;
@@ -262,7 +267,7 @@ body main {
 }
 
 h1 {
-  font-family: "SpaceMono";
+  font-family: "Space Mono";
   font-size: 96px;
   font-style: italic;
   font-weight: 700;
@@ -270,7 +275,7 @@ h1 {
 }
 
 h2 {
-  font-family: "SpaceMono";
+  font-family: "Space Mono";
   font-size: 66px;
   font-style: italic;
   text-transform: uppercase;
@@ -278,7 +283,7 @@ h2 {
 }
 
 h3 {
-  font-family: "SpaceMono";
+  font-family: "Space Mono";
   font-size: 18px;
   font-weight: 400;
   text-transform: uppercase;
