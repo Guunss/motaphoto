@@ -5,7 +5,7 @@
     margin-bottom: 50px;
 
 
-    .photo-container {
+    .photo-infos {
         display: flex;
         flex-direction: row;
         align-items: end;
@@ -118,10 +118,49 @@
 
     .suggestions {
         .photos {
-            display: flex;
-            display: row;
-            justify-content: space-around;
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(2, 1fr);
+            gap : 5%;
+            
         }
     }
 
+}
+
+@media screen and (max-width: 768px) {
+    .contenu-page-photo {
+        .photo-infos {
+            flex-direction: column-reverse;
+            align-items: baseline;
+
+            .infos {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        .interaction {
+            display: block;
+            
+
+            #contact {
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .navigation {
+                display: none;
+            }
+        }
+
+        .suggestions {
+            .photos {
+                grid-template-columns: 1fr;
+                padding-bottom: 25px;
+            }
+        }
+    }
 }

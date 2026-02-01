@@ -28,7 +28,7 @@ if ($custom_query->have_posts()):
 
     ?>
     <div class="contenu-page-photo">
-      <section class="photo-container">
+      <section class="photo-infos">
         <acticle class="infos">
           <h2><?php echo the_title() ?></h2>
           <p class="description-photo">Référence : <span id="photo-ref"><?php echo $reference ?></span></p>

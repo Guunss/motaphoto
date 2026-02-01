@@ -159,22 +159,22 @@ footer .menu-menu-footer-container ul li a {
 .contenu-page-photo {
   margin-bottom: 50px;
 }
-.contenu-page-photo .photo-container {
+.contenu-page-photo .photo-infos {
   display: flex;
   flex-direction: row;
   align-items: end;
   padding-top: 50px;
 }
-.contenu-page-photo .photo-container .infos {
+.contenu-page-photo .photo-infos .infos {
   flex: 0 0 50%;
   border-bottom: 1px solid black;
   margin-right: 10px;
   padding-bottom: 20px;
 }
-.contenu-page-photo .photo-container .photo {
+.contenu-page-photo .photo-infos .photo {
   flex: 0 0 50%;
 }
-.contenu-page-photo .photo-container .photo img {
+.contenu-page-photo .photo-infos .photo img {
   padding: 5px;
   object-fit: contain;
   width: 98%;
@@ -253,9 +253,53 @@ footer .menu-menu-footer-container ul li a {
   transform: scale(2);
 }
 .contenu-page-photo .suggestions .photos {
-  display: flex;
-  display: row;
-  justify-content: space-around;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  .contenu-page-photo .photo-infos {
+    flex-direction: column-reverse;
+    align-items: baseline;
+  }
+  .contenu-page-photo .photo-infos .infos {
+    width: 100%;
+    margin-right: 0;
+  }
+  .contenu-page-photo .interaction {
+    display: block;
+  }
+  .contenu-page-photo .interaction #contact {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenu-page-photo .interaction .navigation {
+    display: none;
+  }
+  .contenu-page-photo .suggestions .photos {
+    grid-template-columns: 1fr;
+    padding-bottom: 25px;
+  }
+}
+.photo-container {
+  width: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: contain;
+}
+.photo-container .photo-image {
+  width: 100%;
+  height: 100%;
+}
+.photo-container .photo-image img {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 body {
@@ -272,6 +316,7 @@ h1 {
   font-style: italic;
   font-weight: 700;
   text-transform: uppercase;
+  line-height: 100%;
 }
 
 h2 {
@@ -280,6 +325,7 @@ h2 {
   font-style: italic;
   text-transform: uppercase;
   font-weight: 400;
+  line-height: 58px;
 }
 
 h3 {
@@ -287,12 +333,27 @@ h3 {
   font-size: 18px;
   font-weight: 400;
   text-transform: uppercase;
+  line-height: 100%;
 }
 
 p {
   font-family: "Poppins";
   font-size: 14px;
   font-weight: 300;
+  line-height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 27.59px;
+  }
+  h2 {
+    font-size: 46px;
+    line-height: 48px;
+  }
+  h3 {
+    font-size: 18px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

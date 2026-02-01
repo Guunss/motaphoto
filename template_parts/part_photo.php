@@ -1,6 +1,6 @@
 <?php
     // Récupération des informations de la photo associée au post
-    $photo_post = get_the_post_thumbnail(get_the_ID(), 'custom-medium');   
+    $photo_post = get_the_post_thumbnail(get_the_ID(), 'full');   
     $reference_photo = get_field('reference');
     $date_post = get_the_date('Y');
     $titre_post = get_the_title();
