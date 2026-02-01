@@ -4,14 +4,11 @@
 @use 'partials/modale.scss';
 @use 'partials/photo.scss';
 @use 'partials/part_photo.scss';
+@use 'partials/front-page.scss';
+@use 'partials/animation.scss';
 
 body {
     margin: 0;
-
-    main {
-        width: 80%;
-        margin: auto;
-    }
 }
 
 h1 {

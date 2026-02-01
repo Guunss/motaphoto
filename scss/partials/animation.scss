@@ -1,0 +1,32 @@
+section,
+.hero img {
+    animation: section-fade-in-up 2s 0ms ease-in-out both;
+}
+
+.hero {
+    animation: section-fade-in-down 2s 0ms ease-in-out both;
+}
+
+@keyframes section-fade-in-up {
+    0% {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes section-fade-in-down {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
