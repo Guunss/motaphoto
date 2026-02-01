@@ -69,20 +69,25 @@ endif;
         $postSuivant = get_next_post();
       ?>
       <div class="tooltips">
-        <span id="tooltip-precedent"><?php echo get_the_post_thumbnail($postPrecedent->ID, 'custom-thumbnail'); ?></span>
+        <?php if (!empty($postPrecedent)) { ?>
+          <span
+            id="tooltip-precedent"><?php echo get_the_post_thumbnail($postPrecedent->ID, 'custom-thumbnail'); ?></span>
+        <?php } ?>
+        <?php if (!empty($postSuivant)) { ?>
         <span id="tooltip-suivant"><?php echo get_the_post_thumbnail($postSuivant->ID, 'custom-thumbnail'); ?></span>
+        <?php } ?>
       </div>
       <div class="links">
-        <?php if (!empty($postPrecedent)): ?>
+        <?php if (!empty($postPrecedent)) { ?>
           <a href="<?php echo get_permalink($postPrecedent) ?>" class="fleche-btn precedent"><img
               src="<?php echo get_stylesheet_directory_uri() . '/assets/images/fleche-gauche.png' ?>"
               alt="fleche navigation image précédente"></a>
-        <?php endif; ?>
-        <?php if (!empty($postSuivant)): ?>
+        <?php } ?>
+        <?php if (!empty($postSuivant)) { ?>
           <a href="<?php echo get_permalink($postSuivant) ?>" class="fleche-btn suivant"><img
               src="<?php echo get_stylesheet_directory_uri() . '/assets/images/fleche-droite.png' ?>"
               alt="fleche navigation image suivante"></a>
-        <?php endif; ?>
+        <?php } ?>
       </div>
     </div>
 
