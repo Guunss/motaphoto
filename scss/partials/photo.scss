@@ -122,7 +122,8 @@
             display: grid;
             width: 100%;
             grid-template-columns: repeat(2, 1fr);
-            gap : 5%;
+            gap : 2vh;
+            justify-items: center;
             
         }
     }

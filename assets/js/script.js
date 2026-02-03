@@ -49,4 +49,17 @@ window.onload = () => {
             }
         }
     });
+
+
+    var selects = document.getElementsByClassName('filter-select');
+
+    Array.from(selects).forEach((select) => {
+        select.onchange = () => {
+            if(select.value === 'empty') {
+                select.value = 'ALL';
+            }
+        }
+    });
+
 }
+

@@ -1,8 +1,7 @@
 .photo-container {
     width: 100%;
-    max-width: 500px;
-    max-height: 500px;
-    object-fit: contain;
+    height: 60vh;
+    object-fit: cover;
     .photo-image {
         width: 100%;
         height: 100%;
