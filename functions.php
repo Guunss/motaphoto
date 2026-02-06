@@ -33,6 +33,37 @@ function more_photos() {
 
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
 
+    // Ajout du filtre de catégorie si présent
+    if (isset($_POST['categorie'])) {
+        $categorie = $_POST['categorie'];
+        $tax_query_categorie[] = array(
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $categorie,
+        );
+    }
+    // Ajout du filtre de format si présent
+    if (isset($_POST['format'])) {
+        $format = $_POST['format'];
+        $tax_query_format[] = array(
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $format,
+        );
+    }
+
+    if (isset($tax_query_format) and isset($tax_query_categorie)) {
+        $tax_query = array(
+            'relation' => 'AND',
+            $tax_query_format,
+            $tax_query_categorie
+        );
+    } else if (isset($tax_query_format)) {
+        $tax_query = $tax_query_format;
+    } else if (isset($tax_query_categorie)) {
+        $tax_query = $tax_query_categorie;
+    }
+
     // requête pour récupérer les posts de type 'photo'
     $photos = new WP_Query(array(
         'post_type' => 'photo',
@@ -40,10 +71,10 @@ function more_photos() {
         'orderby' => 'date',
         'order' => 'ASC',
         'paged' => $paged,
+        'tax_query' => $tax_query
     ));
 
-    $maxPhotos = wp_count_posts( 'photo' )->publish;
-    $actualPages = get_query_var('paged');
+    $maxPhotos = $photos->found_posts;
     ob_start();
     if ($photos->have_posts()) {
         while ($photos->have_posts()) {
@@ -53,10 +84,12 @@ function more_photos() {
         wp_reset_postdata();
     } 
 
+    // requête pour récupérer les posts de type 'photo'
+    $max_photos = 
+
     $output = ob_get_clean();
     wp_send_json_success(array(
         'html' => $output,
-        'actual_page' => $actualPages,
         'max_photos' => $maxPhotos
     ));
 

@@ -333,6 +333,116 @@ footer .menu-menu-footer-container ul li a {
   object-fit: contain;
 }
 
+#filters {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  padding-bottom: 25px;
+  z-index: 99;
+}
+
+.liste-deroulante {
+  margin-top: 3rem;
+  position: relative;
+  display: inline-block;
+  width: 260px;
+}
+.liste-deroulante .placeholder {
+  display: none;
+}
+
+.select-button {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 240px;
+  height: 22px;
+  padding: 10px;
+  border: 1.3px solid #c4c4c4;
+  border-radius: 0.25rem;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+.select-button.open {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border: 1.3px solid #215AFF;
+}
+
+.arrow {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #000;
+  transition: transform ease-in-out 0.3s;
+}
+
+.select-dropdown {
+  position: absolute;
+  left: 0;
+  width: 240px;
+  border: 1px solid #c4c4c4;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: white;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.select-dropdown::-webkit-scrollbar {
+  width: 7px;
+}
+
+.select-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+.select-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+
+.select-dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* Highlight the selected option */
+.select-dropdown li.selected {
+  background-color: #e00000;
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.select-dropdown li:hover,
+.select-dropdown li:focus {
+  background-color: #ffd6d6;
+  border-radius: 4px;
+}
+
+.select-dropdown.hidden {
+  display: none;
+}
+
 #all-photos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

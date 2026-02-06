@@ -72,16 +72,82 @@ window.onload = () => {
         }
     }
 
+    const customSelects = document.querySelectorAll(".liste-deroulante");
+    customSelects.forEach((customSelect) => {
+        const selectButton = customSelect.querySelector(".select-button");
+        const dropdown = customSelect.querySelector(".select-dropdown");
+        const taxomony = customSelect.getAttribute('data-taxomony');
+        const toggleDropdown = () => {
+            dropdown.classList.toggle("hidden");
+            selectButton.classList.toggle("open");
+        };
+        selectButton.onclick = () => {
+            toggleDropdown();
+        };
+
+        const options = dropdown.querySelectorAll("li");
+        const selectedValue = selectButton.querySelector(".selected-value");
+        const placeholder = customSelect.querySelector(".placeholder");
+
+        options.forEach((option) => {
+            option.onclick = () => {
+                handleOptionSelect(option);
+                toggleDropdown();
+            }
+        });
+        const handleOptionSelect = (option) => {
+            options.forEach((opt) => opt.classList.remove("selected"));
+            pagePhoto = 1;
+            if (option.textContent.trim()) {
+                option.classList.add("selected");
+                selectedValue.textContent = option.textContent.trim(); // Update selected value
+                switch (taxomony) {
+                    case "categorie" :
+                        categorieFiltered = option.getAttribute('data-slug');
+                        break;
+                    case "format" :
+                        formatFiltered = option.getAttribute('data-slug');
+                        break;
+                }
+                
+            } else {
+                selectedValue.textContent = placeholder.textContent;
+                switch (taxomony) {
+                    case "categorie" :
+                        categorieFiltered = null;
+                        break;
+                    case "format" :
+                        formatFiltered = null;
+                        break;
+                }
+            }
+            getMorePhotos();
+
+
+        };
+    });
+
+
+
+
 
 }
 
 let pagePhoto = 1;
+let categorieFiltered = null;
+let formatFiltered = null;
 
 const getMorePhotos = () => {
     const formData = new FormData();
     formData.append('action', 'more_photos');
     formData.append('_ajax_nonce', ajaxInfo.nonce);
     formData.append('page', pagePhoto);
+    if (categorieFiltered) {
+        formData.append('categorie', categorieFiltered);
+    }
+    if (formatFiltered) {
+        formData.append('format', formatFiltered);
+    }
 
 
     fetch(ajaxInfo.ajaxUrl, {
@@ -90,7 +156,11 @@ const getMorePhotos = () => {
     }).then(response => response.json())
         .then((response) => {
             var photos = document.getElementById("all-photos");
-            photos.insertAdjacentHTML('beforeend', response.data.html);
+            if (pagePhoto === 1) {
+                photos.innerHTML = response.data.html;
+            } else {
+                photos.insertAdjacentHTML('beforeend', response.data.html);
+            }
             var maxPosts = response.data.max_photos;
 
             var photoDisplayed = document.getElementsByClassName('photo-container').length;
