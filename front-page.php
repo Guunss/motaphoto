@@ -10,8 +10,8 @@ get_header();
     </div>
 </section>
 
-<section class="all-photos">
-
+<section class="album">
+    <div id="all-photos">
 
     <?php
 
@@ -40,6 +40,13 @@ get_header();
     }
 
     ?>
+</div>
+<?php $nb_photos = wp_count_posts( 'photo' )->publish;
+    if ($nb_photos >8) {?>
+<div class="actions">
+    <a href="#" id="chargerPlusBtn">Charger plus</a>
+</div>
+<?php }?>
 
 </section>
 

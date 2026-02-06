@@ -12,7 +12,7 @@ window.onload = () => {
 
     Array.from(linksOpenContact).forEach((linkOpenContact) => {
         linkOpenContact.onclick = () => {
-        modale.style.display = "block";
+            modale.style.display = "block";
             var refphoto = document.getElementById('photo-ref');
             if (refphoto) {
                 var inputRefPhoto = document.getElementsByName('your-ref-photo')[0];
@@ -55,11 +55,51 @@ window.onload = () => {
 
     Array.from(selects).forEach((select) => {
         select.onchange = () => {
-            if(select.value === 'empty') {
+            if (select.value === 'empty') {
                 select.value = 'ALL';
             }
         }
     });
 
+    var btnChargerPlus = document.getElementById('chargerPlusBtn')
+    if (btnChargerPlus) {
+        btnChargerPlus.onclick = () => {
+            pagePhoto++;
+            getMorePhotos();
+
+
+            return false;
+        }
+    }
+
+
 }
+
+let pagePhoto = 1;
+
+const getMorePhotos = () => {
+    const formData = new FormData();
+    formData.append('action', 'more_photos');
+    formData.append('_ajax_nonce', ajaxInfo.nonce);
+    formData.append('page', pagePhoto);
+
+
+    fetch(ajaxInfo.ajaxUrl, {
+        method: 'POST',
+        body: formData,
+    }).then(response => response.json())
+        .then((response) => {
+            var photos = document.getElementById("all-photos");
+            photos.insertAdjacentHTML('beforeend', response.data.html);
+            var maxPosts = response.data.max_photos;
+
+            var photoDisplayed = document.getElementsByClassName('photo-container').length;
+
+            if (photoDisplayed >= maxPosts) {
+                document.getElementById('chargerPlusBtn').style.display = 'none';
+            }
+        }
+        );
+}
+
 

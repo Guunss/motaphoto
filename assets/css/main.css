@@ -333,7 +333,7 @@ footer .menu-menu-footer-container ul li a {
   object-fit: contain;
 }
 
-.all-photos {
+#all-photos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2vh;
@@ -342,6 +342,30 @@ footer .menu-menu-footer-container ul li a {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 25px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actions a {
+  width: 270px;
+  height: 50px;
+  background-color: #d8d8d8;
+  border-radius: 2px;
+  text-decoration: none;
+  color: black;
+  font-family: "Space Mono";
+  font-size: 12px;
+  text-align: center;
+  align-content: center;
+}
+.actions a:hover {
+  border: 2px solid #313144;
+}
+.actions {
+  padding-bottom: 25px;
 }
 
 section,
