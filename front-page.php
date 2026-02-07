@@ -12,12 +12,11 @@ get_header();
 
 <section id="filters">
     <!-- Custom Dropdown Structure -->
-    <div class="liste-deroulante" data-taxomony="categorie">
+    <div class="liste-deroulante" data-taxomony="categorie" data-placeholder="Catégories">
         <div class="select-button">
             <span class="selected-value">Catégories</span>
             <span class="arrow"></span>
         </div>
-        <div class="placeholder">Catégories</div>
         <ul class="select-dropdown hidden">
             <li>&nbsp;</li>
             <?php
@@ -31,12 +30,11 @@ get_header();
         </ul>
     </div>
     <!-- Custom Dropdown Structure -->
-    <div class="liste-deroulante" data-taxomony="format">
+    <div class="liste-deroulante" data-taxomony="format" data-placeholder="Formats">
         <div class="select-button">
             <span class="selected-value">Formats</span>
             <span class="arrow"></span>
         </div>
-        <div class="placeholder">Formats</div>
         <ul class="select-dropdown hidden">
             <li>&nbsp;</li>
             <?php
@@ -49,6 +47,20 @@ get_header();
             ?>
         </ul>
     </div>
+
+        <!-- Custom Dropdown Structure -->
+    <div class="liste-deroulante" data-taxomony="tri" data-placeholder="Trier par">
+        <div class="select-button">
+            <span class="selected-value">Trier par</span>
+            <span class="arrow"></span>
+        </div>
+        <ul class="select-dropdown hidden">
+            <li>&nbsp;</li>
+            <li data-slug="desc">à partir des plus récentes</li>
+            <li data-slug="asc">à partir des plus anciennes</li>
+        </ul>
+    </div>
+
 </section>
 
 <section class="album">

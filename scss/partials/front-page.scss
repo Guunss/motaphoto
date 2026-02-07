@@ -41,6 +41,10 @@
     padding-bottom: 25px;
     z-index: 99;
 
+    div:last-child {
+        margin-left: auto;
+    }
+
 
 
 }
@@ -124,6 +128,9 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
+    &::first-letter {
+        text-transform: uppercase;
+    }
 }
 
 /* Highlight the selected option */

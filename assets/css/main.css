@@ -343,6 +343,9 @@ footer .menu-menu-footer-container ul li a {
   padding-bottom: 25px;
   z-index: 99;
 }
+#filters div:last-child {
+  margin-left: auto;
+}
 
 .liste-deroulante {
   margin-top: 3rem;
@@ -423,6 +426,9 @@ footer .menu-menu-footer-container ul li a {
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
+}
+.select-dropdown li::first-letter {
+  text-transform: uppercase;
 }
 
 /* Highlight the selected option */

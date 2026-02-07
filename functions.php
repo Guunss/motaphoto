@@ -32,6 +32,7 @@ function more_photos() {
     check_ajax_referer('more-photos'); // on controle le nonce
 
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $tri = isset($_POST['tri']) ? intval($_POST['tri']) : null;
 
     // Ajout du filtre de catégorie si présent
     if (isset($_POST['categorie'])) {
@@ -69,7 +70,7 @@ function more_photos() {
         'post_type' => 'photo',
         'posts_per_page' => 8,
         'orderby' => 'date',
-        'order' => 'ASC',
+        'order' => $tri,
         'paged' => $paged,
         'tax_query' => $tax_query
     ));

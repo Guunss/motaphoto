@@ -77,6 +77,11 @@ window.onload = () => {
         const selectButton = customSelect.querySelector(".select-button");
         const dropdown = customSelect.querySelector(".select-dropdown");
         const taxomony = customSelect.getAttribute('data-taxomony');
+        const options = dropdown.querySelectorAll("li");
+        const selectedValue = selectButton.querySelector(".selected-value");
+        const placeholder = customSelect.getAttribute(".placeholder");
+
+
         const toggleDropdown = () => {
             dropdown.classList.toggle("hidden");
             selectButton.classList.toggle("open");
@@ -84,10 +89,6 @@ window.onload = () => {
         selectButton.onclick = () => {
             toggleDropdown();
         };
-
-        const options = dropdown.querySelectorAll("li");
-        const selectedValue = selectButton.querySelector(".selected-value");
-        const placeholder = customSelect.querySelector(".placeholder");
 
         options.forEach((option) => {
             option.onclick = () => {
@@ -102,22 +103,29 @@ window.onload = () => {
                 option.classList.add("selected");
                 selectedValue.textContent = option.textContent.trim(); // Update selected value
                 switch (taxomony) {
-                    case "categorie" :
+                    case "categorie":
                         categorieFiltered = option.getAttribute('data-slug');
                         break;
-                    case "format" :
+                    case "format":
                         formatFiltered = option.getAttribute('data-slug');
                         break;
+                    case "tri":
+                        tri = option.getAttribute('data-slug');
+                        break;
+
                 }
-                
+
             } else {
                 selectedValue.textContent = placeholder.textContent;
                 switch (taxomony) {
-                    case "categorie" :
+                    case "categorie":
                         categorieFiltered = null;
                         break;
-                    case "format" :
+                    case "format":
                         formatFiltered = null;
+                        break;
+                    case "tri":
+                        tri = null;
                         break;
                 }
             }
@@ -136,6 +144,7 @@ window.onload = () => {
 let pagePhoto = 1;
 let categorieFiltered = null;
 let formatFiltered = null;
+let tri = null;
 
 const getMorePhotos = () => {
     const formData = new FormData();
@@ -147,6 +156,9 @@ const getMorePhotos = () => {
     }
     if (formatFiltered) {
         formData.append('format', formatFiltered);
+    }
+    if (tri) {
+        formData.append('tri', tri);
     }
 
 
