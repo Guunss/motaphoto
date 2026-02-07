@@ -9,6 +9,7 @@ function enqueue_assets() {
     wp_enqueue_style('default-style', get_stylesheet_uri() );     
     wp_enqueue_style('theme-style', get_template_directory_uri() .'/assets/css/main.css') ;
     wp_enqueue_script('js-mota', get_template_directory_uri() .'/assets/js/script.js') ;
+    wp_enqueue_script('js-lichtbox', get_template_directory_uri() .'/assets/js/lightbox.js');
     wp_localize_script('js-mota', 'ajaxInfo', array(
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('more-photos')
@@ -32,7 +33,7 @@ function more_photos() {
     check_ajax_referer('more-photos'); // on controle le nonce
 
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
-    $tri = isset($_POST['tri']) ? intval($_POST['tri']) : null;
+    $tri = isset($_POST['tri']) ? intval($_POST['tri']) : 'ASC';
 
     // Ajout du filtre de catégorie si présent
     if (isset($_POST['categorie'])) {
@@ -70,7 +71,7 @@ function more_photos() {
         'post_type' => 'photo',
         'posts_per_page' => 8,
         'orderby' => 'date',
-        'order' => $tri,
+        'order' => strtoupper($tri),
         'paged' => $paged,
         'tax_query' => $tax_query
     ));

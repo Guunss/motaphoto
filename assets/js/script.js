@@ -72,6 +72,8 @@ window.onload = () => {
         }
     }
 
+    updateAction();
+
     const customSelects = document.querySelectorAll(".liste-deroulante");
     customSelects.forEach((customSelect) => {
         const selectButton = customSelect.querySelector(".select-button");
@@ -79,7 +81,7 @@ window.onload = () => {
         const taxomony = customSelect.getAttribute('data-taxomony');
         const options = dropdown.querySelectorAll("li");
         const selectedValue = selectButton.querySelector(".selected-value");
-        const placeholder = customSelect.getAttribute(".placeholder");
+        const placeholder = customSelect.getAttribute("data-placeholder");
 
 
         const toggleDropdown = () => {
@@ -99,7 +101,7 @@ window.onload = () => {
         const handleOptionSelect = (option) => {
             options.forEach((opt) => opt.classList.remove("selected"));
             pagePhoto = 1;
-            if (option.textContent.trim()) {
+            if (option.textContent.trim().length > 0) {
                 option.classList.add("selected");
                 selectedValue.textContent = option.textContent.trim(); // Update selected value
                 switch (taxomony) {
@@ -116,7 +118,7 @@ window.onload = () => {
                 }
 
             } else {
-                selectedValue.textContent = placeholder.textContent;
+                selectedValue.textContent = placeholder;
                 switch (taxomony) {
                     case "categorie":
                         categorieFiltered = null;
@@ -130,7 +132,6 @@ window.onload = () => {
                 }
             }
             getMorePhotos();
-
 
         };
     });
@@ -180,8 +181,44 @@ const getMorePhotos = () => {
             if (photoDisplayed >= maxPosts) {
                 document.getElementById('chargerPlusBtn').style.display = 'none';
             }
+            updateAction();
         }
         );
+}
+
+const updateAction = () => {
+    var photoContainers = document.getElementsByClassName('photo-container');
+
+    Array.from(photoContainers).forEach((photo) => {
+        const actions = photo.querySelector('.photo-actions');
+        photo.onmouseover = () => {
+            actions.style.display = 'block';
+        }
+        photo.onmouseout = (photo) => {
+            actions.style.display = 'none';
+        }
+    });
+
+    var photoInfoBtns = document.getElementsByClassName('btn-infos');
+    Array.from(photoInfoBtns).forEach((photoInfosBtn) => {
+        var photoInfos = photoInfosBtn.parentNode.parentNode.querySelector('.photo-infos');
+        var lienPost = photoInfosBtn.getAttribute('data-lien-post');
+
+        photoInfosBtn.onmouseover = () => {
+            photoInfos.style.display = 'block';
+            photoInfos.style.opacity = 1;
+
+        }
+        photoInfosBtn.onmouseout = (photo) => {
+            photoInfos.style.display = 'none';
+            photoInfos.style.opacity = 0;
+        }
+
+        photoInfosBtn.onclick = () => {
+            window.location.href = lienPost;
+        }
+
+    });
 }
 
 
