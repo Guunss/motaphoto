@@ -223,18 +223,7 @@ const updateAction = () => {
 
     var photoInfoBtns = document.getElementsByClassName('btn-infos');
     Array.from(photoInfoBtns).forEach((photoInfosBtn) => {
-        var photoInfos = photoInfosBtn.parentNode.parentNode.querySelector('.photo-infos');
         var lienPost = photoInfosBtn.getAttribute('data-lien-post');
-
-        photoInfosBtn.onmouseover = () => {
-            photoInfos.style.display = 'block';
-            photoInfos.style.opacity = 1;
-
-        }
-        photoInfosBtn.onmouseout = (photo) => {
-            photoInfos.style.display = 'none';
-            photoInfos.style.opacity = 0;
-        }
 
         photoInfosBtn.onclick = () => {
             window.location.href = lienPost;

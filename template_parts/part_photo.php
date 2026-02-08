@@ -26,15 +26,18 @@ if ($categories && !is_wp_error($categories)) {
             data-photo-ref="<?php echo $reference_photo; ?>" data-photo-cat="<?php echo $liste_categories; ?>">
             <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-fullscreen.svg' ?>" />
         </button>
-        <button class="btn-infos" data-lien-post="<?php echo $lien_post ; ?>">
+        <button class="btn-infos" data-lien-post="<?php echo $lien_post; ?>">
             <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/icon-eye.svg' ?>" />
         </button>
+        <div class="photo-legende">
+            <p class="description-photo">
+                <?php echo $reference_photo ?>
+            </p>
+            <p class="description-photo">
+                <?php echo $liste_categories ?>
+            </p>
+        </div>
     </div>
-    <div class="photo-infos">
-        <p class="description-photo">Titre : <?php echo $titre_post ?></p>
-        <p class="description-photo">Référence : <?php echo $reference_photo ?></p>
-        <p class="description-photo">Année : <?php echo $annee ?></p>
-        </acticle>
-    </div>
+
 
 </div>
