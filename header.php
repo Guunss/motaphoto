@@ -20,13 +20,20 @@
             ?>
         </div>
 
+        <div id="mobile-menu">
+            <span class="trait"></span>
+            <span class="trait"></span>
+            <span class="trait"></span>
+        </div>
+
         <nav id="menu">
             <?php
-                wp_nav_menu(
-                    array(
-                        'menu' => 'menu-principal',
-                        'container' => 'div')
-                    );
+            wp_nav_menu(
+                array(
+                    'menu' => 'menu-principal',
+                    'container' => 'div'
+                )
+            );
             ?>
         </nav>
     </header>

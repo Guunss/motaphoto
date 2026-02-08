@@ -15,26 +15,109 @@ header {
     height: auto;
   }
 
+  #mobile-menu {
+    display: none;
+  }
+
   nav {
-    .menu-menu-principal-container{
-        ul {
-            display: flex;
-            flex-direction: row;
+    .menu-menu-principal-container {
+      ul {
+        display: flex;
+        flex-direction: row;
 
-            li {
-                list-style: none;
+        li {
+          list-style: none;
 
-                a {
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    color: black;
-                    font-size: 16px;
-                    padding: 10px;
-                    font-family: 'Space Mono';
-                }
-            }
+          a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+            font-family: 'Space Mono';
+          }
         }
-        
+      }
+
     }
   }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    justify-content: left;
+    padding-left: 20px;
+    position: relative;
+
+    #mobile-menu {
+      display: flex;
+      flex-direction: column;
+      width: 27px;
+      height: 20px;
+      justify-content: space-between;
+      position: absolute;
+      top: 26px;
+      right: 20px;
+      &.active {
+            .trait:first-child {
+                transform: translateY(10px) rotate(45deg);
+            }
+
+            .trait:nth-child(2) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .trait:last-child {
+                display: none;
+            }
+        }
+    }
+
+    nav {
+      position: absolute;
+      left: 0px;
+      top: 80px;
+      height: 100vh;
+      width: 100vw;
+      transform : scaleY(0);
+      background-color: variables.$color-rouge-1;
+      z-index: 100;
+      transition: transform 0.5s ease-in-out;
+      align-items: center;
+      justify-content: center;
+
+      &.active {
+        display: flex;
+        transform : scaleY(1);
+      }
+      
+
+      .menu-menu-principal-container {
+
+        ul {
+          flex-direction: column;
+          align-items: center;
+
+          li {
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+
+            a {
+              color: white;
+              font-family: Space Mono;
+              font-size: 44px;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.trait {
+  border-top: solid 2px;
+  transition: 0.5s ease;
 }

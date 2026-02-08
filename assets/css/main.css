@@ -59,6 +59,9 @@ header .custom-logo {
   width: 216px;
   height: auto;
 }
+header #mobile-menu {
+  display: none;
+}
 header nav .menu-menu-principal-container ul {
   display: flex;
   flex-direction: row;
@@ -73,6 +76,68 @@ header nav .menu-menu-principal-container ul li a {
   font-size: 16px;
   padding: 10px;
   font-family: "Space Mono";
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    justify-content: left;
+    padding-left: 20px;
+    position: relative;
+  }
+  header #mobile-menu {
+    display: flex;
+    flex-direction: column;
+    width: 27px;
+    height: 20px;
+    justify-content: space-between;
+    position: absolute;
+    top: 26px;
+    right: 20px;
+  }
+  header #mobile-menu.active .trait:first-child {
+    transform: translateY(10px) rotate(45deg);
+  }
+  header #mobile-menu.active .trait:nth-child(2) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  header #mobile-menu.active .trait:last-child {
+    display: none;
+  }
+  header nav {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    height: 100vh;
+    width: 100vw;
+    transform: scaleY(0);
+    background-color: #e00000;
+    z-index: 100;
+    transition: transform 0.5s ease-in-out;
+    align-items: center;
+    justify-content: center;
+  }
+  header nav.active {
+    display: flex;
+    transform: scaleY(1);
+  }
+  header nav .menu-menu-principal-container ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  header nav .menu-menu-principal-container ul li {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  header nav .menu-menu-principal-container ul li a {
+    color: white;
+    font-family: Space Mono;
+    font-size: 44px;
+    text-transform: uppercase;
+  }
+}
+.trait {
+  border-top: solid 2px;
+  transition: 0.5s ease;
 }
 
 footer {
@@ -103,6 +168,19 @@ footer .menu-menu-footer-container ul li a {
   font-family: "Space Mono";
 }
 
+@media screen and (max-width: 768px) {
+  footer {
+    height: auto;
+  }
+  footer .menu-menu-footer-container ul {
+    flex-direction: column;
+  }
+  footer .menu-menu-footer-container ul li {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 25px;
+  }
+}
 .modale {
   display: none;
   position: fixed;
@@ -118,7 +196,9 @@ footer .menu-menu-footer-container ul li a {
   padding-top: 5px;
   padding-bottom: 10px;
   background-color: white;
-  margin: 5% auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80px;
   border: 5px solid black;
   width: 597px;
   border-radius: 5px;
@@ -156,6 +236,28 @@ footer .menu-menu-footer-container ul li a {
   border: 1px solid #c4c4c4;
 }
 
+@media screen and (max-width: 768px) {
+  .modale .modale-content {
+    width: 286px;
+  }
+  .modale .modale-content img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .modale #formulaire {
+    padding-left: 40px;
+  }
+  .modale #formulaire input {
+    width: 190px;
+  }
+  .modale #formulaire .wpcf7-submit {
+    width: 200px;
+  }
+  .modale #formulaire textarea {
+    width: 190px;
+    height: 149px;
+  }
+}
 .contenu-page-photo {
   width: 80%;
   margin: auto;
@@ -340,6 +442,11 @@ footer .menu-menu-footer-container ul li a {
   animation: infos-fade-in 0.3s ease-in-out;
 }
 
+@media screen and (max-width: 768px) {
+  .photo-container .photo-actions {
+    display: block;
+  }
+}
 @keyframes infos-fade-in {
   from {
     opacity: 0;
@@ -447,6 +554,7 @@ footer .menu-menu-footer-container ul li a {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   max-height: 200px;
   overflow-y: auto;
+  z-index: 999;
 }
 
 .select-dropdown::-webkit-scrollbar {
@@ -528,6 +636,21 @@ footer .menu-menu-footer-container ul li a {
   padding-bottom: 25px;
 }
 
+@media screen and (max-width: 768px) {
+  #filters {
+    flex-direction: column;
+    width: 80%;
+  }
+  #filters div {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+  #all-photos {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 section,
 .hero img {
   animation: section-fade-in-up 2s 0ms ease-in-out both;

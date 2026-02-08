@@ -44,16 +44,14 @@
     div:last-child {
         margin-left: auto;
     }
-
-
-
 }
 
 .liste-deroulante {
     margin-top: 3rem;
     position: relative;
     display: inline-block;
-    width: 260px; 
+    width: 260px;
+
     .placeholder {
         display: none;
     }
@@ -77,6 +75,7 @@
     font-size: 12px;
     line-height: 18px;
     text-transform: uppercase;
+
     &.open {
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -105,6 +104,7 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     max-height: 200px;
     overflow-y: auto;
+    z-index: 999;
 }
 
 .select-dropdown::-webkit-scrollbar {
@@ -128,6 +128,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
+
     &::first-letter {
         text-transform: uppercase;
     }
@@ -188,4 +189,26 @@
     }
 
     padding-bottom: 25px;
+}
+
+@media screen and (max-width: 768px) {
+    #filters {
+        flex-direction: column;
+        width: 80%;
+
+        div {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+        }
+    }
+
+    #all-photos {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+
+
+    }
+
+
 }

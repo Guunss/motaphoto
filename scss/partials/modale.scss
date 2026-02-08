@@ -4,18 +4,20 @@
     display: none;
     position: fixed;
     z-index: 99;
-    left:0;
-    top:0;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     background-color: black;
-    background-color: rgba(variables.$color-gris-1,0.4);
+    background-color: rgba(variables.$color-gris-1, 0.4);
 
     .modale-content {
         padding-top: 5px;
         padding-bottom: 10px;
         background-color: white;
-        margin: 5% auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top : 80px;
         border: 5px solid black;
         width: 597px;
         border-radius: 5px;
@@ -23,12 +25,14 @@
 
     #formulaire {
         padding-left: 165px;
+
         label {
             text-transform: uppercase;
             font-size: 12px;
             font-weight: 500;
             font-family: 'Poppins';
         }
+
         input {
             width: 263px;
             height: 40px;
@@ -38,14 +42,17 @@
             font-weight: 400;
             font-family: 'Space Mono';
         }
+
         .wpcf7-submit {
             width: 265px;
+
             &:hover {
                 border: 2px solid black;
                 transform: scale(1.2);
                 transition: all 0.3s ease-in;
             }
         }
+
         textarea {
             width: 263px;
             height: 210px;
@@ -53,4 +60,36 @@
             border: 1px solid variables.$color-gris-2;
         }
     }
+}
+
+@media screen and (max-width: 768px) {
+    .modale {
+
+        .modale-content {
+            width: 286px;
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        #formulaire {
+            padding-left: 40px;
+
+            input {
+                width: 190px;
+            }
+
+            .wpcf7-submit {
+                width: 200px;
+            }
+
+            textarea {
+                width: 190px;
+                height: 149px;
+            }
+        }
+    }
+
+
 }

@@ -31,3 +31,22 @@ footer {
 
     }
 }
+
+@media screen and (max-width: 768px) {
+    footer {
+        height: auto;
+
+        .menu-menu-footer-container {
+            ul {
+
+                flex-direction: column;
+
+                li {
+                    margin-right: auto;
+                    margin-left: auto;
+                    margin-top: 25px;
+                }
+            }
+        }
+    }
+}
