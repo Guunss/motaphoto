@@ -33,7 +33,7 @@ function more_photos() {
     check_ajax_referer('more-photos'); // on controle le nonce
 
     $paged = isset($_POST['page']) ? intval($_POST['page']) : 1;
-    $tri = isset($_POST['tri']) ? intval($_POST['tri']) : 'ASC';
+    $tri = isset($_POST['tri']) ? $_POST['tri'] : 'ASC';
 
     // Ajout du filtre de catégorie si présent
     if (isset($_POST['categorie'])) {
@@ -86,9 +86,6 @@ function more_photos() {
         wp_reset_postdata();
     } 
 
-    // requête pour récupérer les posts de type 'photo'
-    $max_photos = 
-
     $output = ob_get_clean();
     wp_send_json_success(array(
         'html' => $output,
@@ -96,6 +93,7 @@ function more_photos() {
     ));
 
 }
+// Le hook pour ajax pour utilisateur non identifé
 add_action('wp_ajax_nopriv_more_photos', 'more_photos');
 add_action('wp_ajax_more_photos', 'more_photos');
 
